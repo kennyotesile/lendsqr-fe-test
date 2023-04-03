@@ -62,13 +62,13 @@ export default function Login() {
                   <div className='flex flex-col gap-[24px]'>
                     <p>
                       <label htmlFor="email" className='hidden'>Email</label>
-                      <input type="email" id="email" name="email" className='border border-2 rounded-[5px] pt-[15px] pb-[12px] px-[16px] w-full
+                      <input type="email" id="email" name="email" className='border border-2 border-primary-border-color rounded-[5px] pt-[15px] pb-[12px] px-[16px] w-full
                       focus:outline-primary-color no-transition' placeholder='Email' value={loginInfo.email} onChange={handleLoginInfoInputChange} />
                     </p>
                     <p>
                       <label htmlFor="password" className='hidden'>Password</label>
                       <span className='flex flex-col justify-center items-end'>
-                        <input type="password" id="password" name="password" className='border border-2 rounded-[5px] pt-[15px] pb-[12px] pl-[16px] pr-[82px] w-full
+                        <input type="password" id="password" name="password" className='border border-2 border-primary-border-color rounded-[5px] pt-[15px] pb-[12px] pl-[16px] pr-[82px] w-full
                           focus:outline-primary-color no-transition' placeholder='Password' value={loginInfo.password} onChange={handleLoginInfoInputChange} />
                         <span className='button text-primary-color text-12 absolute mt-[4px] mr-[18px]' onClick={showOrHidePassword}>{showOrHidePasswordLabelValue}</span>
                       </span>
