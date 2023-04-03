@@ -27,8 +27,17 @@ export default function Login() {
   const [showOrHidePasswordLabelValue, setShowOrHidePasswordLabelValue] = useState<string>("SHOW");
   
   function showOrHidePassword() {
-    showOrHidePasswordLabelValue == "SHOW" ? setShowOrHidePasswordLabelValue("HIDE") : setShowOrHidePasswordLabelValue("SHOW");
+    const passwordField = document.querySelector<HTMLInputElement>('#password');
+  
+    if (showOrHidePasswordLabelValue == "SHOW") {
+      setShowOrHidePasswordLabelValue("HIDE");
+      passwordField && (passwordField.type = 'text');
+    } else {
+      setShowOrHidePasswordLabelValue("SHOW");
+      passwordField && (passwordField.type = 'password');
+    }
   }
+  
 
   return (
     <>
