@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$primary-font: 'Avenir';
+
+$primary-color: #39cdcc;
+$primary-color-hover: #30abab;
+$primary-color-outline: #39cdcd67;
+$primary-text-color: #545f7d;
+$accent-text-color: #213f7d;
+$primary-text-color: #545f7d;
+
+@font-face {
+  font-family: $primary-font;
+  src: url('../assets/Avenir/Avenir\ 35\ Light.otf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: $primary-font;
+  src: url('../assets/Avenir/Avenir\ 65\ Medium.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: $primary-font;
+  src: url('../assets/Avenir/Avenir\ 95\ Black.otf');
+  font-weight: 700;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $primary-font, sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  color: $primary-text-color;
+  transition: .3s;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.text-12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.text-20 {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.text-40 {
+  font-size: 40px;
+  line-height: 55px;
+}
+
+input[type='button'], .button {
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+Link {
+  cursor: pointer;
+}
+
+.no-transition {
+  transition: none;
+}

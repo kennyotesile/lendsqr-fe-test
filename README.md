@@ -18,6 +18,7 @@ The application is designed with security in mind. It uses advanced encryption t
 - [React](https://react.dev/) with [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [SCSS](https://sass-lang.com/)
+- [Tailwind CSS](https://tailwindcss.com)
 
 ## Conclusion
 [Lendsqr](https://lendsqr.com) is a comprehensive financial platform that empowers lenders with the tech stack they need to scale while providing their borrowers with an awesome loan experience. With its user-friendly dashboard, decision models, and security features, this application provides users with a secure financial experience.
