@@ -45,9 +45,9 @@ export default function Login() {
             <title>Log in | Lendsqr</title>
         </Head>
         <main className='flex flex-row'>
-            <div className='absolute block m-[24px] md:ml-[48px] md:mt-[53px] lg:ml-[97px] lg:mt-[106px]'>
+            <Link href='/' className='absolute block m-[24px] md:ml-[48px] md:mt-[53px] lg:ml-[97px] lg:mt-[106px]'>
               <Image src="/logo.svg" width={173.76} height={36} alt="Lendsqr logo" />
-            </div>
+            </Link>
             <div className='flex flex-col h-screen hidden md:flex w-1/2 items-center py-[300px] justify-center'>
                 <Image src="/pablo-sign-in 1.svg" width={600} height={338} alt="Illustration" />
             </div>
@@ -62,13 +62,13 @@ export default function Login() {
                   <div className='flex flex-col gap-[24px]'>
                     <p>
                       <label htmlFor="email" className='hidden'>Email</label>
-                      <input type="email" id="email" name="email" className='border border-2 border-primary-border-color rounded-[5px] pt-[15px] pb-[12px] px-[16px] w-full
+                      <input type="email" id="email" name="email" className='border border-2 border-primary-border-color rounded-[5px] pt-[15px] pb-[14px] px-[16px] w-full
                       focus:outline-primary-color no-transition' placeholder='Email' value={loginInfo.email} onChange={handleLoginInfoInputChange} />
                     </p>
                     <p>
                       <label htmlFor="password" className='hidden'>Password</label>
                       <span className='flex flex-col justify-center items-end'>
-                        <input type="password" id="password" name="password" className='border border-2 border-primary-border-color rounded-[5px] pt-[15px] pb-[12px] pl-[16px] pr-[82px] w-full
+                        <input type="password" id="password" name="password" className='border border-2 border-primary-border-color rounded-[5px] pt-[15px] pb-[14px] pl-[16px] pr-[82px] w-full
                           focus:outline-primary-color no-transition' placeholder='Password' value={loginInfo.password} onChange={handleLoginInfoInputChange} />
                         <span className='button text-primary-color text-12 absolute mt-[4px] mr-[18px]' onClick={showOrHidePassword}>{showOrHidePasswordLabelValue}</span>
                       </span>
@@ -77,7 +77,7 @@ export default function Login() {
                   </div>
                   <div>
                     <input type='button' value='LOG IN' className='w-full bg-primary-color hover:bg-primary-color-hover
-                    rounded-[8px] pt-[16px] pb-[13px] text-white' onClick={handleLogin} />
+                    rounded-[8px] py-[17px] text-white' onClick={handleLogin} />
                   </div>
                 </div>
               </form>
