@@ -179,6 +179,15 @@ export default function TopNav() {
                     </ul>
                 </section>
             ))}
+
+            <hr className='mt-[60px]' />
+            <button type='button' onClick={() => {
+                window.location.href = '/'
+            }} className='flex w-full gap-[10px] text-16 text-accent-text-color mt-[10px] px-[30px] py-[12px] border-l-[3px] border-transparent'>
+                <img src='/icons/logout-icon.svg' width={16} height={16} alt='Log out icon' />
+                Log out
+            </button>
+            <p className='text-12 text-accent-text-color mt-[10px] px-[30px] py-[12px]'>v1.2.0</p>
         </nav>
     );
 }
