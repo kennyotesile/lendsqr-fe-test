@@ -58,18 +58,22 @@ export default function Users() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
-                      <td className='py-[20px]'>Lendsqr</td>
-                      <td className='py-[20px]'>Adedeji</td>
-                      <td className='py-[20px]'>adedeji@lendsqr.com</td>
-                      <td className='py-[20px]'>08078903721</td>
-                      <td className='py-[20px]'>May 15, 2020 10:00 AM</td>
-                      <td className='py-[20px] flex'>
-                        <div className='px-[13px] py-[8px] rounded-full bg-primary-text-color/[0.06]'>Inactive</div>
-                      </td>
-                    </tr>
+                    <tr className='border-b-[1px] border-accent-text-color/[0.1] cursor-pointer hover:bg-gray-100/70' onClick={() => {
+                      window.location.href = '/customers/users/user-details'
+                    }}>
+                        <td className='py-[20px]'>Lendsqr</td>
+                        <td className='py-[20px]'>Adedeji</td>
+                        <td className='py-[20px]'>adedeji@lendsqr.com</td>
+                        <td className='py-[20px]'>08078903721</td>
+                        <td className='py-[20px]'>May 15, 2020 10:00 AM</td>
+                        <td className='py-[20px] flex'>
+                          <div className='px-[13px] py-[8px] rounded-full bg-primary-text-color/[0.06]'>Inactive</div>
+                        </td>
+                      </tr>
 
-                    <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
+                    <tr className='border-b-[1px] border-accent-text-color/[0.1] cursor-pointer hover:bg-gray-100/70' onClick={() => {
+                      window.location.href = '/customers/users/user-details'
+                    }}>
                       <td className='py-[20px]'>Lendsqr</td>
                       <td className='py-[20px]'>Adedeji</td>
                       <td className='py-[20px]'>adedeji@lendsqr.com</td>
@@ -80,7 +84,9 @@ export default function Users() {
                       </td>
                     </tr>
 
-                    <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
+                    <tr className='border-b-[1px] border-accent-text-color/[0.1] cursor-pointer hover:bg-gray-100/70' onClick={() => {
+                      window.location.href = '/customers/users/user-details'
+                    }}>
                       <td className='py-[20px]'>Lendsqr</td>
                       <td className='py-[20px]'>Adedeji</td>
                       <td className='py-[20px]'>adedeji@lendsqr.com</td>
@@ -91,7 +97,9 @@ export default function Users() {
                       </td>
                     </tr>
 
-                    <tr>
+                    <tr className='border-b-[1px] border-accent-text-color/[0.1] cursor-pointer hover:bg-gray-100/70' onClick={() => {
+                      window.location.href = '/customers/users/user-details'
+                    }}>
                       <td className='py-[20px]'>Lendsqr</td>
                       <td className='py-[20px]'>Adedeji</td>
                       <td className='py-[20px]'>adedeji@lendsqr.com</td>
