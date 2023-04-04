@@ -26,7 +26,7 @@ export default function TopNav() {
     return (
         <nav className={[topNavStyles.shadowX, 'flex h-[100px] items-center bg-white'].join(" ")}>
             <div className='px-[24px] md:px-[30px]'>
-                <Link href='/dashboard'>
+                <Link href='/'>
                     <img src='/logo.svg' alt='Lendsqr logo' className='w-[145px] h-[30px] mr-[108px]' />
                 </Link>
             </div>
