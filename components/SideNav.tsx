@@ -155,7 +155,7 @@ export default function TopNav() {
                 )}
             </div>
 
-            <Link href='#' className={router.pathname == '/dashboard' ?
+            <Link href='/dashboard' className={router.pathname == '/dashboard' ?
                                 [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-100 mt-[30px] px-[30px] py-[12px] border-l-[3px] bg-primary-color-lighter border-primary-color'].join(' ') :
                                 [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-60 hover:opacity-100 mt-[30px] px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color'].join(' ')}>
                 <img src='/icons/dashboard-icon.svg' width={16} height={16} alt='Dashboard icon' />
