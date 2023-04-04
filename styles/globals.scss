@@ -1,15 +1,10 @@
+@use 'colors';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 $primary-font: 'Avenir';
-
-$primary-color: #39cdcc;
-$primary-color-hover: #30abab;
-$primary-color-outline: #39cdcd67;
-$primary-text-color: #545f7d;
-$primary-text-color-70: rgba(84, 95, 125, 0.7);
-$accent-text-color: #213f7d;
 
 @font-face {
   font-family: $primary-font;
@@ -36,7 +31,7 @@ $accent-text-color: #213f7d;
   font-family: $primary-font, sans-serif;
   font-size: 14px;
   line-height: 14px;
-  color: $primary-text-color;
+  color: colors.$primary-text-color;
   transition: .3s;
 }
 
@@ -76,7 +71,7 @@ input[type='button'], .button {
 }
 
 input::placeholder {
-  color: $primary-text-color-70;
+  color: colors.$primary-text-color-70;
 }
 
 Link {

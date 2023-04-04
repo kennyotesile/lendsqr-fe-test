@@ -1,0 +1,6 @@
+@use 'colors';
+
+.link:hover {
+    background-color: colors.$primary-color-lighter;
+    // border-left: 3px solid colors.$primary-color;
+}
