@@ -1,115 +1,166 @@
 import sideNavStyles from '@/styles/SideNav.module.scss';
 import Link from "next/link";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function TopNav() {
     interface Link {
-        title: string;
-        url: string;
+        title: string,
+        url: string,
+        iconUrl: string
     }
       
     interface NavSections {
-        CUSTOMERS: Link[];
-        BUSINESSES: Link[];
-        SETTINGS: Link[];
+        CUSTOMERS: Link[],
+        BUSINESSES: Link[],
+        SETTINGS: Link[]
     }
       
     const navSections: NavSections = {
         CUSTOMERS: [
             {
                 title: 'Users',
-                url: '/customers/users'
+                url: '/customers/users',
+                iconUrl: '/icons/users-icon.svg'
             },
             {
                 title: 'Guarantors',
-                url: '/customers/guarantors'
+                url: '/customers/guarantors',
+                iconUrl: '/icons/guarantors-icon.svg'
             },
             {
                 title: 'Loans',
-                url: '/customers/loans'
+                url: '/customers/loans',
+                iconUrl: '/icons/loans-icon.svg'
             },
             {
                 title: 'Decision Models',
-                url: '/customers/decision-models'
+                url: '/customers/decision-models',
+                iconUrl: '/icons/decision-models-icon.svg'
             },
             {
                 title: 'Savings',
-                url: '/customers/savings'
+                url: '/customers/savings',
+                iconUrl: '/icons/savings-icon.svg'
             },
             {
                 title: 'Loan Requests',
-                url: '/customers/loan-requests'
+                url: '/customers/loan-requests',
+                iconUrl: '/icons/loan-requests-icon.svg'
             },
             {
                 title: 'Whitelist',
-                url: '/customers/whitelist'
+                url: '/customers/whitelist',
+                iconUrl: '/icons/whitelist-icon.svg'
             },
             {
                 title: 'Karma',
-                url: '/customers/karma'
+                url: '/customers/karma',
+                iconUrl: '/icons/karma-icon.svg'
             }
         ],
         BUSINESSES: [
             {
                 title: 'Organization',
-                url: '/businesses/organization'
+                url: '/businesses/organization',
+                iconUrl: '/icons/organization-icon.svg'
             },
             {
                 title: 'Loan Products',
-                url: '/businesses/loan-products'
+                url: '/businesses/loan-products',
+                iconUrl: '/icons/loans-icon.svg'
             },
             {
                 title: 'Savings Products',
-                url: '/businesses/savings-products'
+                url: '/businesses/savings-products',
+                iconUrl: '/icons/savings-products-icon.svg'
             },
             {
                 title: 'Fees and Charges',
-                url: '/businesses/fees-and-charges'
+                url: '/businesses/fees-and-charges',
+                iconUrl: '/icons/fees-and-charges-icon.svg'
             },
             {
                 title: 'Transactions',
-                url: '/businesses/transactions'
+                url: '/businesses/transactions',
+                iconUrl: '/icons/transactions-icon.svg'
             },
             {
                 title: 'Services',
-                url: '/businesses/services'
+                url: '/businesses/services',
+                iconUrl: '/icons/services-icon.svg'
             },
             {
                 title: 'Service Account',
-                url: '/businesses/service-account'
+                url: '/businesses/service-account',
+                iconUrl: '/icons/service-account-icon.svg'
             },
             {
                 title: 'Settlements',
-                url: '/businesses/settlements'
+                url: '/businesses/settlements',
+                iconUrl: '/icons/settlements-icon.svg'
             },
             {
                 title: 'Reports',
-                url: '/businesses/reports'
+                url: '/businesses/reports',
+                iconUrl: '/icons/reports-icon.svg'
             }
         ],
         SETTINGS: [
             {
                 title: 'Preferences',
-                url: '/settings/preferences'
+                url: '/settings/preferences',
+                iconUrl: '/icons/preferences-icon.svg'
             },
             {
                 title: 'Fees and Pricing',
-                url: '/settings/fees-and-pricing'
+                url: '/settings/fees-and-pricing',
+                iconUrl: '/icons/fees-and-pricing-icon.svg'
             },
             {
                 title: 'Audit Logs',
-                url: '/settings/audit-logs'
+                url: '/settings/audit-logs',
+                iconUrl: '/icons/audit-logs-icon.svg'
             },
             {
-                title: 'System Messages',
-                url: '/settings/system-messages'
+                title: 'Systems Messages',
+                url: '/settings/systems-messages',
+                iconUrl: '/icons/systems-messages-icon.svg'
             }
         ]
     }
 
+    const router = useRouter();
+
+    const [isSwitchOrgDropdownOpen, setIsSwitchOrgDropdownOpen] = useState<boolean>(false);
+
+    function handleSwitchOrgDropdown() {
+        setIsSwitchOrgDropdownOpen(!isSwitchOrgDropdownOpen);
+    }
+
     return (
         <nav className='w-[283px] bg-white py-[30px] h-full overflow-y-auto'>
-            <Link href='#' className={[sideNavStyles.link, 'flex text-16 text-accent-text-color px-[30px] py-[12px] border-l-[3px] border-primary-color'].join(' ')}>Switch Organization</Link>
-            <Link href='#' className={[sideNavStyles.link, 'flex text-16 text-accent-text-color-lighter hover:text-accent-text-color px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color mt-[30px]'].join(' ')}>Dashboard</Link>
+            <div className='relative'>
+                <button type='button' className='flex gap-[10px] items-center text-16 text-accent-text-color px-[30px] py-[12px] border-l-[3px] border-transparent cursor-pointer'
+                onClick={handleSwitchOrgDropdown}>
+                    <img src='/icons/organization-icon.svg' width={16} height={16} alt='Organization icon' />
+                    Switch Organization
+                    <img src='/icons/chevron-down-icon.svg' width={12} height={12} alt='Organization icon' />
+                </button>
+                {isSwitchOrgDropdownOpen && (
+                    <div className='flex flex-col absolute bg-white min-w-[220px] py-[4px] rounded-[8px] border border-1 border-gray-200 right-[24px] mt-[4px]'>
+                        <Link href='#' className='px-[30px] py-[12px] hover:bg-primary-color-lighter'>Some Company</Link>
+                        <Link href='#' className='px-[30px] py-[12px] hover:bg-primary-color-lighter'>Pecunia LLC</Link>
+                    </div>
+                )}
+            </div>
+
+            <Link href='#' className={router.pathname == '/dashboard' ?
+                                [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-100 mt-[30px] px-[30px] py-[12px] border-l-[3px] bg-primary-color-lighter border-primary-color'].join(' ') :
+                                [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-60 hover:opacity-100 mt-[30px] px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color'].join(' ')}>
+                <img src='/icons/dashboard-icon.svg' width={16} height={16} alt='Dashboard icon' />
+                Dashboard
+            </Link>
 
             {Object.keys(navSections).map((navSectionKey) => (
                 <section key={navSectionKey} className='mt-[30px]'>
@@ -117,7 +168,12 @@ export default function TopNav() {
                     <ul className='flex flex-col gap-[10px]'>
                         {navSections[navSectionKey].map((link: Link) => (
                             <li key={link.url}>
-                                <Link href={link.url} className={[sideNavStyles.link, 'flex text-16 text-accent-text-color-lighter hover:text-accent-text-color px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color'].join(' ')}>{link.title}</Link>
+                                <Link href={link.url} className={router.pathname == link.url ?
+                                [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-100 px-[30px] py-[12px] border-l-[3px] bg-primary-color-lighter border-primary-color'].join(' ') :
+                                [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-60 hover:opacity-100 px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color'].join(' ')}>
+                                    <img src={link.iconUrl} width={16} height={16} alt={`${link.title} icon`} className='' />
+                                    {link.title}
+                                </Link>
                             </li>
                         ))}
                     </ul>
