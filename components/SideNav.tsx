@@ -113,7 +113,7 @@ export default function TopNav() {
 
             {Object.keys(navSections).map((navSectionKey) => (
                 <section key={navSectionKey} className='mt-[30px]'>
-                    <h2 className='text-12 font-semibold mx-[30px] mb-[10px]'>{navSectionKey}</h2>
+                    <h2 className='text-12 font-medium mx-[30px] mb-[10px]'>{navSectionKey}</h2>
                     <ul className='flex flex-col gap-[10px]'>
                         {navSections[navSectionKey].map((link: Link) => (
                             <li key={link.url}>

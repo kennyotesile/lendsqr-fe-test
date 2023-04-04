@@ -44,7 +44,7 @@ export default function Login() {
         <Head>
             <title>Log in | Lendsqr</title>
         </Head>
-        <main className='flex flex-row'>
+        <main className='flex flex-row font-avenir'>
             <Link href='/' className='absolute block m-[24px] md:ml-[48px] md:mt-[53px] lg:ml-[97px] lg:mt-[106px]'>
               <Image src="/logo.svg" width={173.76} height={36} alt="Lendsqr logo" />
             </Link>
@@ -54,7 +54,7 @@ export default function Login() {
             <div className={[loginStyles.shadowY, 'flex flex-col h-screen w-full md:w-1/2 px-[24px] md:px-[50px] lg:px-[100px] py-[300px] justify-center'].join(" ")}>
               <form className='w-full md:max-w-[447px]'>
                 <div className='mb-[60px]'>
-                  <h1 className='font-bold text-accent-text-color text-40'>Welcome!</h1>
+                  <h1 className='font-bold text-accent-text-color text-40 mb-[20px]'>Welcome!</h1>
                   <p className='text-20'>Enter details to login.</p>
                 </div>
                 

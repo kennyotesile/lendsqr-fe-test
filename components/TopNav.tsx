@@ -58,7 +58,7 @@ export default function TopNav() {
                     </span>
                     <span className='cursor-pointer flex items-center gap-[10px]'>
                         <img src='/avatar.png' alt='Avatar' className='w-[48px] h-[48px]' />
-                        <span className='text-accent-text-color font-semibold mt-1'>Adedeji</span>
+                        <span className='text-accent-text-color font-medium mt-1'>Adedeji</span>
                         <Image src='/dropdown-icon.svg' width={8} height={4} alt='Dropdown icon' className='mt-1' />
                     </span>
                 </div>

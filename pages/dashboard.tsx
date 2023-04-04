@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Dashboard | Lendsqr</title>
       </Head>
-      <main className='bg-whitespace-color h-screen pt-[100px]'>
+      <main className='font-work-sans bg-whitespace-color h-screen pt-[100px]'>
         <section className='absolute w-screen top-0'>
           <TopNav />
         </section>

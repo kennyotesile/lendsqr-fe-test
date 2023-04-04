@@ -21,7 +21,10 @@ module.exports = {
         "primary-border-color": "rgba(84, 95, 125, 0.15)",
 
         "primary-color-outline": "rgba(57, 205, 204, 0.4)"
-      }
+      },
+      fontFamily: {
+        'work-sans': ['"Work Sans"', 'sans-serif']
+      },
     },
   },
   plugins: [],
