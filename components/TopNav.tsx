@@ -2,6 +2,7 @@ import topNavStyles from '@/styles/TopNav.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import SideNav from './SideNav';
 
 export default function TopNav() {
     const [searchInputValue, setSearchInputValue] = useState<string>('');
@@ -63,10 +64,24 @@ export default function TopNav() {
                     </span>
                 </div>
 
-                <div className='p-2 lg:hidden'>
+                <button type='button' className='p-2 lg:hidden' onClick={() => {
+                    document.querySelector('#mobileSideNavBarUnderlay')?.classList.remove('hidden');
+                    document.querySelector('#mobileSideNavBar')?.classList.remove('hidden');
+                }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.2} stroke="currentColor" className="w-10 h-10">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
+                </button>
+
+                <div id='mobileSideNavBarUnderlay' className='absolute w-screen h-screen top-0 left-0 z-20 bg-gray-900/50 hidden' onClick={() => {
+                    document.querySelector('#mobileSideNavBar')?.classList.add('hidden');
+                    document.querySelector('#mobileSideNavBarUnderlay')?.classList.add('hidden');
+                }}></div>
+
+                <div id='mobileSideNavBar' className='absolute h-screen top-0 left-0 z-20 overflow-y-scroll hidden'>
+                    <div className='relative bg-red-900/50'>
+                        <SideNav />
+                    </div>
                 </div>
             </div>
         </nav>

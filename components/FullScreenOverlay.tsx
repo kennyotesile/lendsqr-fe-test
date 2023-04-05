@@ -12,6 +12,6 @@ export function showOverlay() {
 
 export default function FullScreenOverlay({ onClick }: Props) {
     return (
-        <div id="fullScreenOverlay" onClick={onClick} className='absolute z-10 h-screen w-screen hidden bg-transparent'></div>
+        <div id="fullScreenOverlay" onClick={onClick} className='absolute z-30 h-screen w-screen hidden bg-transparent'></div>
     );
 }

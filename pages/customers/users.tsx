@@ -157,7 +157,7 @@ export default function Users() {
                             <img src='/icons/more-icon.svg' alt='More icon' />
                           </button>
                           {
-                            showMoreActionsDropdown && <div id='moreActionsDropdown' className='absolute z-20 right-0 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.04] w-[180px]'>
+                            showMoreActionsDropdown && <div id='moreActionsDropdown' className='absolute z-40 right-0 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.04] w-[180px]'>
                             <ul className='flex flex-col'>
                               <li>
                                 <Link href='/customers/users/user-details' type='button' className='p-[14px] w-full hover:bg-gray-100 rounded-t-[4px] flex gap-[8px]'>
@@ -236,7 +236,7 @@ export default function Users() {
                       <img src='/icons/chevron-down-icon.svg' alt='Dropdown icon' />
                     </button>
                     {
-                      showNumberOfUsersShownDropdown && <div id='numberOfUsersShownDropdown' className='flex-col bg-white rounded-[4px] border border-1 border-gray-200 absolute z-20 top-[34px]'>
+                      showNumberOfUsersShownDropdown && <div id='numberOfUsersShownDropdown' className='flex-col bg-white rounded-[4px] border border-1 border-gray-200 absolute z-40 top-[34px]'>
                       <input type='number' max='100' min='1' placeholder='1 - 100' className='border border-0 rounded-[4px] focus:outline-primary-color h-8 w-[76px] px-2' />
                     </div>
                     }
