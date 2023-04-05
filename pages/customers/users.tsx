@@ -10,16 +10,23 @@ import { switchOrgDropdownState } from '@/states/sideNavStates';
 export default function Users() {
   const [showNumberOfUsersShownDropdown, setShowNumberOfUsersShownDropdown] = useState<boolean>(false);
   const [showMoreActionsDropdown, setShowMoreActionsDropdown] = useState<boolean>(false);
+  const [showFiltersDropdown, setShowFiltersDropdown] = useState<boolean>(false);
 
   const [switchOrgDropdown, setSwitchOrgDropdown] = useRecoilState<boolean>(switchOrgDropdownState);
 
   function hideAllDropdowns() {
     setShowNumberOfUsersShownDropdown(false);
     setShowMoreActionsDropdown(false);
+    setShowFiltersDropdown(false);
 
     setSwitchOrgDropdown(false);
 
     hideOverlay();
+  }
+
+  function handleShowFiltersDropdown() {
+    setShowFiltersDropdown(true);
+    showOverlay();
   }
 
   return (
@@ -74,15 +81,67 @@ export default function Users() {
                       <th className='text-12 font-semibold'>
                         <span className='flex items-center gap-[10px]'>
                           ORGANIZATION
-                          <button>
+                          <button onClick={handleShowFiltersDropdown}>
                             <img src='/icons/filter-icon.svg' alt='filter-icon' />
                           </button>
                         </span>
+                        {
+                          showFiltersDropdown && <div id='filtersDropdown' className='relative'>
+                            <div className='absolute z-40 left-0 top-[15px] shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-text-color/[0.14] w-[270px] font-medium'>
+                              <div className='flex flex-col py-[30px] px-[20px] gap-[20px]'>
+                                <div className='flex flex-col gap-[6px]'>
+                                  Organization
+                                  <select className='rounded-[8px] py-[12px] px-[20px] border border-[1px] border-accent-text-color/20 outline-primary-color font-normal cursor-pointer'>
+                                    <option value='Select'>Select</option>
+                                    <option value='Org 1'>Org 1</option>
+                                    <option value='Org 2'>Org 2</option>
+                                  </select>
+                                </div>
+
+                                <div className='flex flex-col gap-[6px]'>
+                                  User
+                                  <input type='text' className='rounded-[8px] py-[12px] px-[20px] border border-[1px] border-accent-text-color/20 outline-primary-color font-normal' placeholder='User' />
+                                </div>
+
+                                <div className='flex flex-col gap-[6px]'>
+                                  Email
+                                  <input type='email' className='rounded-[8px] py-[12px] px-[20px] border border-[1px] border-accent-text-color/20 outline-primary-color font-normal' placeholder='Email' />
+                                </div>
+
+                                <div className='flex flex-col gap-[6px]'>
+                                  Date
+                                  <input type='date' className='rounded-[8px] py-[12px] px-[20px] border border-[1px] border-accent-text-color/20 outline-primary-color font-normal' placeholder='Email' />
+                                </div>
+
+                                <div className='flex flex-col gap-[6px]'>
+                                  Phone number
+                                  <input type='text' className='rounded-[8px] py-[12px] px-[20px] border border-[1px] border-accent-text-color/20 outline-primary-color font-normal' placeholder='Email' />
+                                </div>
+
+                                <div className='flex flex-col gap-[6px]'>
+                                  Status
+                                  <select className='rounded-[8px] py-[12px] px-[20px] border border-[1px] border-accent-text-color/20 outline-primary-color font-normal cursor-pointer'>
+                                    <option value='Select'>Select</option>
+                                    <option value='Inactive'>Inactive</option>
+                                    <option value='Pending'>Pending</option>
+                                    <option value='Blacklisted'>Blacklisted</option>
+                                    <option value='Active'>Active</option>
+                                  </select>
+                                </div>
+
+                                <div className='flex gap-[14px]'>
+                                  <button type='button' className='py-[12px] px-[30px] border border-[1px] border-primary-text-color rounded-[8px] font-semibold'>Reset</button>
+                                  <button type='button' className='py-[12px] px-[30px] border border-[1px] border-primary-color rounded-[8px] font-semibold bg-primary-color hover:bg-primary-color-hover hover:border-primary-color-hover text-white'>Reset</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        }
                       </th>
                       <th className='text-12 font-semibold'>
                         <span className='flex items-center gap-[10px]'>
                           USERNAME
-                          <button>
+                          <button onClick={handleShowFiltersDropdown}>
                             <img src='/icons/filter-icon.svg' alt='filter-icon' />
                           </button>
                         </span>
@@ -90,7 +149,7 @@ export default function Users() {
                       <th className='text-12 font-semibold'>
                         <span className='flex items-center gap-[10px]'>
                           EMAIL
-                          <button>
+                          <button onClick={handleShowFiltersDropdown}>
                             <img src='/icons/filter-icon.svg' alt='filter-icon' />
                           </button>
                         </span>
@@ -98,7 +157,7 @@ export default function Users() {
                       <th className='text-12 font-semibold'>
                         <span className='flex items-center gap-[10px]'>
                           PHONE NUMBER
-                          <button>
+                          <button onClick={handleShowFiltersDropdown}>
                             <img src='/icons/filter-icon.svg' alt='filter-icon' />
                           </button>
                         </span>
@@ -106,7 +165,7 @@ export default function Users() {
                       <th className='text-12 font-semibold'>
                         <span className='flex items-center gap-[10px]'>
                           DATE JOINED
-                          <button>
+                          <button onClick={handleShowFiltersDropdown}>
                             <img src='/icons/filter-icon.svg' alt='filter-icon' />
                           </button>
                         </span>
@@ -114,7 +173,7 @@ export default function Users() {
                       <th className='text-12 font-semibold'>
                         <span className='flex items-center gap-[10px]'>
                           STATUS
-                          <button>
+                          <button onClick={handleShowFiltersDropdown}>
                             <img src='/icons/filter-icon.svg' alt='filter-icon' />
                           </button>
                         </span>
