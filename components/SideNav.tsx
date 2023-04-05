@@ -139,12 +139,7 @@ export default function SideNav({ switchOrgDropdown, setSwitchOrgDropdown }: Pro
         setSwitchOrgDropdown(true);
         showOverlay();
     }
-
-    function hideAllDropdowns() {
-        setSwitchOrgDropdown(false);
-        hideOverlay();
-    }
-
+    
     return (
         <nav className='w-[283px] bg-white py-[30px] h-full overflow-y-auto'>
             <div className='relative'>
