@@ -146,7 +146,7 @@ export default function TopNav() {
                     <img src='/icons/chevron-down-icon.svg' width={12} height={12} alt='Organization icon' />
                 </button>
                 {isSwitchOrgDropdownOpen && (
-                    <div className='flex flex-col absolute bg-white min-w-[220px] py-[4px] rounded-[8px] border border-1 border-gray-200 right-[24px] mt-[4px]'>
+                    <div className='flex flex-col absolute z-20 bg-white min-w-[220px] py-[4px] rounded-[8px] border border-1 border-gray-200 right-[24px] mt-[4px]'>
                         <Link href='#' className='px-[30px] py-[12px] hover:bg-primary-color-lighter'>Some Company</Link>
                         <Link href='#' className='px-[30px] py-[12px] hover:bg-primary-color-lighter'>Pecunia LLC</Link>
                     </div>
