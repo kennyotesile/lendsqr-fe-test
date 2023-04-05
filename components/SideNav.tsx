@@ -1,9 +1,14 @@
 import sideNavStyles from '@/styles/SideNav.module.scss';
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { hideOverlay, showOverlay } from '@/components/FullScreenOverlay';
 
-export default function TopNav() {
+interface Props {
+    switchOrgDropdown: boolean;
+    setSwitchOrgDropdown: (val: boolean) => void;
+}
+
+export default function SideNav({ switchOrgDropdown, setSwitchOrgDropdown }: Props) {
     interface Link {
         title: string,
         url: string,
@@ -130,22 +135,26 @@ export default function TopNav() {
 
     const router = useRouter();
 
-    const [isSwitchOrgDropdownOpen, setIsSwitchOrgDropdownOpen] = useState<boolean>(false);
+    function showSwitchOrgDropdown() {
+        setSwitchOrgDropdown(true);
+        showOverlay();
+    }
 
-    function handleSwitchOrgDropdown() {
-        setIsSwitchOrgDropdownOpen(!isSwitchOrgDropdownOpen);
+    function hideAllDropdowns() {
+        setSwitchOrgDropdown(false);
+        hideOverlay();
     }
 
     return (
         <nav className='w-[283px] bg-white py-[30px] h-full overflow-y-auto'>
             <div className='relative'>
                 <button type='button' className='flex gap-[10px] items-center text-16 text-accent-text-color px-[30px] py-[12px] border-l-[3px] border-transparent cursor-pointer'
-                onClick={handleSwitchOrgDropdown}>
+                onClick={showSwitchOrgDropdown}>
                     <img src='/icons/organization-icon.svg' width={16} height={16} alt='Organization icon' />
                     Switch Organization
                     <img src='/icons/chevron-down-icon.svg' width={12} height={12} alt='Organization icon' />
                 </button>
-                {isSwitchOrgDropdownOpen && (
+                {switchOrgDropdown && (
                     <div className='flex flex-col absolute z-20 bg-white min-w-[220px] py-[4px] rounded-[8px] border border-1 border-gray-200 right-[24px] mt-[4px]'>
                         <Link href='#' className='px-[30px] py-[12px] hover:bg-primary-color-lighter'>Some Company</Link>
                         <Link href='#' className='px-[30px] py-[12px] hover:bg-primary-color-lighter'>Pecunia LLC</Link>

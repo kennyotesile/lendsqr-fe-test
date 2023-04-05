@@ -3,16 +3,34 @@ import Head from 'next/head'
 import SideNav from '@/components/SideNav'
 import { useState } from 'react'
 import Link from 'next/link';
+import FullScreenOverlay, { hideOverlay, showOverlay } from '@/components/FullScreenOverlay';
 
 export default function Users() {
-  const [isNumberOfUsersShownDropdownOpen, setIsNumberOfUsersShownDropdownOpen] = useState<boolean>(false);
-  const [isMoreActionsDropdownOpen, setIsMoreActionsDropdownOpen] = useState<boolean>(false);
+  const [showNumberOfUsersShownDropdown, setShowNumberOfUsersShownDropdown] = useState<boolean>(false);
+  const [showMoreActionsDropdown, setShowMoreActionsDropdown] = useState<boolean>(false);
+  const [switchOrgDropdown, setSwitchOrgDropdown] = useState<boolean>(false);
+
+  function hideAllDropdowns() {
+    setShowNumberOfUsersShownDropdown(false);
+    setShowMoreActionsDropdown(false);
+
+    setSwitchOrgDropdown(false);
+
+    hideOverlay();
+  }
+
+  function handleSetSwitchOrgDropdown(val: boolean) {
+    setSwitchOrgDropdown(val);
+  }
 
   return (
     <>
       <Head>
         <title>Users | Lendsqr</title>
       </Head>
+
+      <FullScreenOverlay onClick={hideAllDropdowns} />
+      
       <div className='font-work-sans bg-whitespace-color h-screen pt-[100px]'>
         <div className='absolute w-screen top-0'>
           <TopNav />
@@ -20,7 +38,7 @@ export default function Users() {
 
         <div className='h-full overflow-y-auto flex'>
           <aside className='hidden h-full lg:block'>
-            <SideNav />
+            <SideNav switchOrgDropdown={switchOrgDropdown} setSwitchOrgDropdown={handleSetSwitchOrgDropdown} />
           </aside>
 
           <main className='w-full h-full flex flex-col p-[24px] md:p-[30px] lg:p-[60px] overflow-y-auto'>
@@ -134,12 +152,13 @@ export default function Users() {
                       <td>
                         <div className='relative'>
                           <button onClick={() => {
-                            isMoreActionsDropdownOpen ? document.querySelector('#moreActionsDropdown')?.classList.add('hidden') : document.querySelector('#moreActionsDropdown')?.classList.remove('hidden');
-                            setIsMoreActionsDropdownOpen(!isMoreActionsDropdownOpen);
+                            setShowMoreActionsDropdown(!showMoreActionsDropdown);
+                            showOverlay();
                           }}>
                             <img src='/icons/more-icon.svg' alt='More icon' />
                           </button>
-                          <div id='moreActionsDropdown' className='hidden absolute right-0 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.04] w-[180px]'>
+                          {
+                            showMoreActionsDropdown && <div id='moreActionsDropdown' className='absolute z-20 right-0 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.04] w-[180px]'>
                             <ul className='flex flex-col'>
                               <li>
                                 <Link href='/customers/users/user-details' type='button' className='p-[14px] w-full hover:bg-gray-100 rounded-t-[4px] flex gap-[8px]'>
@@ -161,6 +180,7 @@ export default function Users() {
                               </li>
                             </ul>
                           </div>
+                          }
                         </div>
                       </td>
                     </tr>
@@ -205,8 +225,9 @@ export default function Users() {
                   Showing
                   <div className='relative'>
                     <button className='px-[12px] py-[8px] flex gap-[18px] items-center bg-accent-text-color/10 hover:bg-accent-text-color/20 rounded-[4px]' onClick={() => {
-                      isNumberOfUsersShownDropdownOpen ? document.querySelector('#numberOfUsersShownDropdown')?.classList.add('hidden') : document.querySelector('#numberOfUsersShownDropdown')?.classList.remove('hidden');
-                      setIsNumberOfUsersShownDropdownOpen(!isNumberOfUsersShownDropdownOpen);
+                      setShowNumberOfUsersShownDropdown(!showNumberOfUsersShownDropdown);
+                      showOverlay();
+                      
                       const numberOfUsersShownDropdownInput = document.querySelector('#numberOfUsersShownDropdown input');
                       if (numberOfUsersShownDropdownInput instanceof HTMLInputElement) {
                         numberOfUsersShownDropdownInput.focus();
@@ -215,9 +236,11 @@ export default function Users() {
                       100
                       <img src='/icons/chevron-down-icon.svg' alt='Dropdown icon' />
                     </button>
-                    <div id='numberOfUsersShownDropdown' className='flex-col bg-white rounded-[4px] border border-1 border-gray-200 absolute top-[34px] hidden'>
-                      <input type='number' max='100' min='1' placeholder='0' className='border border-0 rounded-[4px] focus:outline-primary-color h-8 w-20 px-2' />
+                    {
+                      showNumberOfUsersShownDropdown && <div id='numberOfUsersShownDropdown' className='flex-col bg-white rounded-[4px] border border-1 border-gray-200 absolute z-20 top-[34px]'>
+                      <input type='number' max='100' min='1' placeholder='1 - 100' className='border border-0 rounded-[4px] focus:outline-primary-color h-8 w-[76px] px-2' />
                     </div>
+                    }
                   </div>
                   out of 100
                 </div> {/** Fix: No. of rows dropdown */}
