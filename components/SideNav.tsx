@@ -1,14 +1,11 @@
 import sideNavStyles from '@/styles/SideNav.module.scss';
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import { hideOverlay, showOverlay } from '@/components/FullScreenOverlay';
+import { showOverlay } from '@/components/FullScreenOverlay';
+import { useRecoilState } from 'recoil';
+import { switchOrgDropdownState } from '@/states/sideNavStates';
 
-interface Props {
-    switchOrgDropdown: boolean;
-    setSwitchOrgDropdown: (val: boolean) => void;
-}
-
-export default function SideNav({ switchOrgDropdown, setSwitchOrgDropdown }: Props) {
+export default function SideNav() {
     interface Link {
         title: string,
         url: string,
@@ -135,11 +132,13 @@ export default function SideNav({ switchOrgDropdown, setSwitchOrgDropdown }: Pro
 
     const router = useRouter();
 
+    const [switchOrgDropdown, setSwitchOrgDropdown] = useRecoilState<boolean>(switchOrgDropdownState);
+
     function showSwitchOrgDropdown() {
         setSwitchOrgDropdown(true);
         showOverlay();
     }
-    
+
     return (
         <nav className='w-[283px] bg-white py-[30px] h-full overflow-y-auto'>
             <div className='relative'>

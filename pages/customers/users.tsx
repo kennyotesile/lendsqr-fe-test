@@ -4,11 +4,14 @@ import SideNav from '@/components/SideNav'
 import { useState } from 'react'
 import Link from 'next/link';
 import FullScreenOverlay, { hideOverlay, showOverlay } from '@/components/FullScreenOverlay';
+import { useRecoilState } from 'recoil';
+import { switchOrgDropdownState } from '@/states/sideNavStates';
 
 export default function Users() {
   const [showNumberOfUsersShownDropdown, setShowNumberOfUsersShownDropdown] = useState<boolean>(false);
   const [showMoreActionsDropdown, setShowMoreActionsDropdown] = useState<boolean>(false);
-  const [switchOrgDropdown, setSwitchOrgDropdown] = useState<boolean>(false);
+
+  const [switchOrgDropdown, setSwitchOrgDropdown] = useRecoilState<boolean>(switchOrgDropdownState);
 
   function hideAllDropdowns() {
     setShowNumberOfUsersShownDropdown(false);
@@ -17,10 +20,6 @@ export default function Users() {
     setSwitchOrgDropdown(false);
 
     hideOverlay();
-  }
-
-  function handleSetSwitchOrgDropdown(val: boolean) {
-    setSwitchOrgDropdown(val);
   }
 
   return (
@@ -38,7 +37,7 @@ export default function Users() {
 
         <div className='h-full overflow-y-auto flex'>
           <aside className='hidden h-full lg:block'>
-            <SideNav switchOrgDropdown={switchOrgDropdown} setSwitchOrgDropdown={handleSetSwitchOrgDropdown} />
+            <SideNav />
           </aside>
 
           <main className='w-full h-full flex flex-col p-[24px] md:p-[30px] lg:p-[60px] overflow-y-auto'>
