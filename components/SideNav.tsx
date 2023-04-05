@@ -11,9 +11,7 @@ export default function TopNav() {
     }
       
     interface NavSections {
-        CUSTOMERS: Link[],
-        BUSINESSES: Link[],
-        SETTINGS: Link[]
+        [sectionName: string]: Link[]
     }
       
     const navSections: NavSections = {
