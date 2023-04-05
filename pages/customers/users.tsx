@@ -74,11 +74,11 @@ export default function Users() {
             </section>
 
             <section className='mt-[40px] flex flex-col justify-between gap-[20px]'>
-              <div className='w-full h-[640px] flex flex-col shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.06] p-[30px]'>
+              <div className='overflow-x-auto w-full h-[640px] flex flex-col shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.06] p-[30px]'>
                 <table className='table-auto text-left m-0'>
                   <thead className='h-[30px] align-top'>
                     <tr>
-                      <th className='text-12 font-semibold'>
+                      <th className='text-12 font-semibold whitespace-nowrap pr-[30px]'>
                         <span className='flex items-center gap-[10px]'>
                           ORGANIZATION
                           <button onClick={handleShowFiltersDropdown}>
@@ -138,7 +138,7 @@ export default function Users() {
                           </div>
                         }
                       </th>
-                      <th className='text-12 font-semibold'>
+                      <th className='text-12 font-semibold whitespace-nowrap pl-[30px]'>
                         <span className='flex items-center gap-[10px]'>
                           USERNAME
                           <button onClick={handleShowFiltersDropdown}>
@@ -146,7 +146,7 @@ export default function Users() {
                           </button>
                         </span>
                       </th>
-                      <th className='text-12 font-semibold'>
+                      <th className='text-12 font-semibold whitespace-nowrap pl-[30px]'>
                         <span className='flex items-center gap-[10px]'>
                           EMAIL
                           <button onClick={handleShowFiltersDropdown}>
@@ -154,7 +154,7 @@ export default function Users() {
                           </button>
                         </span>
                       </th>
-                      <th className='text-12 font-semibold'>
+                      <th className='text-12 font-semibold whitespace-nowrap pl-[30px]'>
                         <span className='flex items-center gap-[10px]'>
                           PHONE NUMBER
                           <button onClick={handleShowFiltersDropdown}>
@@ -162,7 +162,7 @@ export default function Users() {
                           </button>
                         </span>
                       </th>
-                      <th className='text-12 font-semibold'>
+                      <th className='text-12 font-semibold whitespace-nowrap pl-[30px]'>
                         <span className='flex items-center gap-[10px]'>
                           DATE JOINED
                           <button onClick={handleShowFiltersDropdown}>
@@ -170,7 +170,7 @@ export default function Users() {
                           </button>
                         </span>
                       </th>
-                      <th className='text-12 font-semibold'>
+                      <th className='text-12 font-semibold whitespace-nowrap pl-[30px]'>
                         <span className='flex items-center gap-[10px]'>
                           STATUS
                           <button onClick={handleShowFiltersDropdown}>
@@ -178,27 +178,56 @@ export default function Users() {
                           </button>
                         </span>
                       </th>
-                      <th></th>
+                      <th className='pl-[30px]'></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
-                      <td className='py-[20px]'>Lendsqr</td>
-                      <td className='py-[20px]'>Adedeji</td>
-                      <td className='py-[20px]'>adedeji@lendsqr.com</td>
-                      <td className='py-[20px]'>08078903721</td>
-                      <td className='py-[20px]'>May 15, 2020 10:00 AM</td>
-                      <td className='py-[20px] flex'>
+                      <td className='py-[20px] whitespace-nowrap pr-[30px]'>Lendsqr</td>
+                      <td className='py-[20px] whitespace-nowrap pl-[30px]'>Adedeji</td>
+                      <td className='py-[20px] whitespace-nowrap pl-[30px]'>adedeji@lendsqr.com</td>
+                      <td className='py-[20px] whitespace-nowrap pl-[30px]'>08078903721</td>
+                      <td className='py-[20px] whitespace-nowrap pl-[30px]'>May 15, 2020 10:00 AM</td>
+                      <td className='py-[20px] whitespace-nowrap pl-[30px] flex'>
                         <div className='px-[13px] py-[8px] rounded-full bg-primary-text-color/[0.06]'>Inactive</div>
                       </td>
-                      <td>
-                        <button>
-                          <img src='/icons/more-icon.svg' alt='More icon' />
-                        </button>
+                      <td className='pl-[30px]'>
+                        <div className='relative'>
+                          <button onClick={() => {
+                            setShowMoreActionsDropdown(!showMoreActionsDropdown);
+                            showOverlay();
+                          }}>
+                            <img src='/icons/more-icon.svg' alt='More icon' />
+                          </button>
+                          {
+                            showMoreActionsDropdown && <div id='moreActionsDropdown' className='absolute z-40 right-0 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.04] w-[180px]'>
+                            <ul className='flex flex-col'>
+                              <li>
+                                <Link href='/customers/users/user-details' type='button' className='p-[14px] w-full hover:bg-gray-100 rounded-t-[4px] flex gap-[8px]'>
+                                  <img src='/icons/eye-icon.svg' alt='View details icon' />
+                                  <span>View details</span>
+                                </Link>
+                              </li>
+                              <li>
+                                <button type='button' className='p-[14px] w-full hover:bg-gray-100 flex gap-[8px]'>
+                                  <img src='/icons/blacklist-user-icon.svg' alt='Blacklist user icon' />
+                                  <span>Blacklist user</span>
+                                </button>
+                              </li>
+                              <li>
+                                <button type='button' className='p-[14px] w-full hover:bg-gray-100 rounded-b-[4px] flex gap-[8px]'>
+                                  <img src='/icons/activate-user-icon.svg' alt='Activate user icon' />
+                                  <span>Activate user</span>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                          }
+                        </div>
                       </td>
                     </tr>
 
-                    <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
+                    {/* <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
                       <td className='py-[20px]'>Lendsqr</td>
                       <td className='py-[20px]'>Adedeji</td>
                       <td className='py-[20px]'>adedeji@lendsqr.com</td>
@@ -273,7 +302,7 @@ export default function Users() {
                           <img src='/icons/more-icon.svg' alt='More icon' />
                         </button>
                       </td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table> {/** Fix: Consume data from endpoint */ }
               </div>
