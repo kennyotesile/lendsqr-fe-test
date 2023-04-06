@@ -356,8 +356,13 @@ export default function Users() {
                                     out of { users && users.length }
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <button className='w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10'>
-                                        <img src='/icons/chevron-left-icon.svg' alt='Back icon' className='opacity-60' />
+                                    <button className={currPage == 1 ? 'w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10 cursor-default' : 'w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10 hover:bg-accent-text-color/20'}
+                                    onClick={() =>  {
+                                        if (currPage > 1) {
+                                            setCurrPage(currPage - 1);
+                                        }
+                                    }}>
+                                        <img src='/icons/chevron-left-icon.svg' alt='Previous icon' className={currPage == 1 ? 'opacity-60' : ''} />
                                     </button>
 
                                     <div className='flex gap-[4px]'>
@@ -400,8 +405,13 @@ export default function Users() {
                                         </> }
                                     </div>
 
-                                    <button className='w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10 hover:bg-accent-text-color/20'>
-                                        <img src='/icons/chevron-right-icon.svg' alt='Next icon' />
+                                    <button className={currPage == numOfPages ? 'w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10 cursor-default' : 'w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10 hover:bg-accent-text-color/20'}
+                                    onClick={() =>  {
+                                        if (currPage < numOfPages) {
+                                            setCurrPage(currPage + 1);
+                                        }
+                                    }}>
+                                        <img src='/icons/chevron-right-icon.svg' alt='Next icon' className={currPage == numOfPages ? 'opacity-60' : ''} />
                                     </button>
                                 </div>
                             </div>
