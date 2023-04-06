@@ -28,7 +28,7 @@ export default function TopNav() {
         <nav className={[topNavStyles.shadowX, 'flex h-[100px] items-center bg-white'].join(" ")}>
             <div className='px-[24px] md:px-[30px]'>
                 <Link href='/'>
-                    <img src='/logo.svg' alt='Lendsqr logo' className='w-[145px] h-[30px] mr-[108px]' />
+                    <Image src='/logo.svg' alt='Lendsqr logo' className='w-[145px] h-[30px] mr-[108px]' width={145} height={30} />
                 </Link>
             </div>
 
@@ -58,7 +58,7 @@ export default function TopNav() {
                         </Link>
                     </span>
                     <span className='cursor-pointer flex items-center gap-[10px]'>
-                        <img src='/avatar.png' alt='Avatar' className='w-[48px] h-[48px]' />
+                        <Image src='/avatar.png' alt='Avatar' className='w-[48px] h-[48px]' width={48} height={48} />
                         <span className='text-accent-text-color font-medium mt-1'>Adedeji</span>
                         <Image src='/dropdown-icon.svg' width={8} height={4} alt='Dropdown icon' className='mt-1' />
                     </span>

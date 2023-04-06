@@ -4,6 +4,7 @@ import SideNav from '@/components/SideNav'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function UserDetails() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -72,13 +73,13 @@ export default function UserDetails() {
           setUsers(JSON.parse(localStorage.getItem('users')!));
       }
     }
-  }, [router.isReady])
+  }, [router.isReady, apiUrl])
 
   useEffect(() => {
     if (users !== null) {
       setUser(users[userId - 1]);
     }
-  }, [users])
+  }, [users, userId])
 
   return (
     <>
@@ -97,7 +98,7 @@ export default function UserDetails() {
 
           <main className='w-full h-full flex flex-col p-[24px] md:p-[30px] lg:p-[60px] overflow-y-auto'>
             <button onClick={router.back} className='text-16 mb-[32px] flex items-center gap-[13px]'>
-                <img src='/icons/back-arrow.svg' alt='Back icon' />
+                <Image src='/icons/back-arrow.svg' alt='Back icon' width={30} height={30} />
                 Back to Users
             </button>
             <div className='flex flex-col gap-[20px] md:flex-row justify-between mb-[40px]'>
@@ -112,7 +113,7 @@ export default function UserDetails() {
               <div className='flex flex-col md:flex-row'>
                 <div className='flex'>
                   {
-                    user?.profile?.avatar ? <img src={user.profile.avatar} alt='User avatar' className='mb-[14px] h-[100px] w-[100px] rounded-full' /> : <img src='/avatar.svg' alt='User default avatar' className='mb-[14px]' />
+                    user?.profile?.avatar ? <Image src={user.profile.avatar} alt='User avatar' className='mb-[14px] h-[100px] w-[100px] rounded-full'  width={100} height={100}  /> : <Image src='/avatar.svg' alt='User default avatar' className='mb-[14px]'  width={100} height={100}  />
                   }
                   <div className='px-[30px] pl-[20px] flex items-center'>
                       <span>
@@ -123,11 +124,11 @@ export default function UserDetails() {
                 </div>
                 <div className='border-0 md:border-l-[1px] border-primary-text-color/[0.2] my-[10px] px-0 md:px-[30px] flex items-center'>
                     <span className='flex flex-col gap-[10px]'>
-                        <span className='font-medium'>User's Tier</span>
+                        <span className='font-medium'>User&apos;s Tier</span>
                         <span className='flex gap-[5px]'>
-                            <img src='/icons/star-filled-icon.svg' alt='Star filled' />
-                            <img src='/icons/star-icon.svg' alt='Star' />
-                            <img src='/icons/star-icon.svg' alt='Star' />
+                            <Image src='/icons/star-filled-icon.svg' alt='Star filled'  width={16} height={16} />
+                            <Image src='/icons/star-icon.svg' alt='Star'  width={16} height={16} />
+                            <Image src='/icons/star-icon.svg' alt='Star'  width={16} height={16} />
                         </span>
                     </span>
                 </div>

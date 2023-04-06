@@ -6,6 +6,7 @@ import Link from 'next/link';
 import FullScreenOverlay, { hideOverlay, showOverlay } from '@/components/FullScreenOverlay';
 import { useRecoilState } from 'recoil';
 import { switchOrgDropdownState } from '@/states/sideNavStates';
+import Image from 'next/image';
 
 export default function Users() {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -143,22 +144,22 @@ export default function Users() {
 
                         <section className='flex flex-col md:flex-row gap-[20px] md:gap-[24px]'>
                             <div className='flex-1 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] p-[30px] pt-[20px] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.06]'>
-                                <img src='/heading-icons/users-icon.svg' alt='Users icon' className='mb-[14px]' />
+                                <Image src='/heading-icons/users-icon.svg' alt='Users icon' className='mb-[14px]' width={40} height={40} />
                                 <span className='font-medium block mb-[12px]'>USERS</span>
                                 <span className='text-24 text-accent-text-color font-semibold'>2,453</span>
                             </div>
                             <div className='flex-1 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] p-[30px] pt-[20px] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.06]'>
-                                <img src='/heading-icons/active-users-icon.svg' alt='Active users icon' className='mb-[14px]' />
+                                <Image src='/heading-icons/active-users-icon.svg' alt='Active users icon' className='mb-[14px]' width={40} height={40} />
                                 <span className='font-medium block mb-[12px]'>ACTIVE USERS</span>
                                 <span className='text-24 text-accent-text-color font-semibold'>2,453</span>
                             </div>
                             <div className='flex-1 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] p-[30px] pt-[20px] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.06]'>
-                                <img src='/heading-icons/users-with-loans-icon.svg' alt='Users with loans icon' className='mb-[14px]' />
+                                <Image src='/heading-icons/users-with-loans-icon.svg' alt='Users with loans icon' className='mb-[14px]' width={40} height={40} />
                                 <span className='font-medium block mb-[12px]'>USERS WITH LOANS</span>
                                 <span className='text-24 text-accent-text-color font-semibold'>12,453</span>
                             </div>
                             <div className='flex-1 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] p-[30px] pt-[20px] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.06]'>
-                                <img src='/heading-icons/users-with-savings-icon.svg' alt='Users with savings icon' className='mb-[14px]' />
+                                <Image src='/heading-icons/users-with-savings-icon.svg' alt='Users with savings icon' className='mb-[14px]' width={40} height={40} />
                                 <span className='font-medium block mb-[12px]'>USERS WITH SAVINGS</span>
                                 <span className='text-24 text-accent-text-color font-semibold'>102,453</span>
                             </div>
@@ -173,7 +174,7 @@ export default function Users() {
                                                 <span className='flex items-center gap-[10px]'>
                                                     ORGANIZATION
                                                     <button onClick={handleShowFiltersDropdown}>
-                                                        <img src='/icons/filter-icon.svg' alt='filter-icon' />
+                                                        <Image src='/icons/filter-icon.svg' alt='filter-icon' width={16} height={16} />
                                                     </button>
                                                 </span>
                                                 {
@@ -233,7 +234,7 @@ export default function Users() {
                                                 <span className='flex items-center gap-[10px]'>
                                                     USERNAME
                                                     <button onClick={handleShowFiltersDropdown}>
-                                                        <img src='/icons/filter-icon.svg' alt='filter-icon' />
+                                                        <Image src='/icons/filter-icon.svg' alt='filter-icon' width={16} height={16} />
                                                     </button>
                                                 </span>
                                             </th>
@@ -241,7 +242,7 @@ export default function Users() {
                                                 <span className='flex items-center gap-[10px]'>
                                                     EMAIL
                                                     <button onClick={handleShowFiltersDropdown}>
-                                                        <img src='/icons/filter-icon.svg' alt='filter-icon' />
+                                                        <Image src='/icons/filter-icon.svg' alt='filter-icon' width={16} height={16} />
                                                     </button>
                                                 </span>
                                             </th>
@@ -249,7 +250,7 @@ export default function Users() {
                                                 <span className='flex items-center gap-[10px]'>
                                                     PHONE NUMBER
                                                     <button onClick={handleShowFiltersDropdown}>
-                                                        <img src='/icons/filter-icon.svg' alt='filter-icon' />
+                                                        <Image src='/icons/filter-icon.svg' alt='filter-icon' width={16} height={16} />
                                                     </button>
                                                 </span>
                                             </th>
@@ -257,7 +258,7 @@ export default function Users() {
                                                 <span className='flex items-center gap-[10px]'>
                                                     DATE JOINED
                                                     <button onClick={handleShowFiltersDropdown}>
-                                                        <img src='/icons/filter-icon.svg' alt='filter-icon' />
+                                                        <Image src='/icons/filter-icon.svg' alt='filter-icon' width={16} height={16} />
                                                     </button>
                                                 </span>
                                             </th>
@@ -265,7 +266,7 @@ export default function Users() {
                                                 <span className='flex items-center gap-[10px]'>
                                                     STATUS
                                                     <button onClick={handleShowFiltersDropdown}>
-                                                        <img src='/icons/filter-icon.svg' alt='filter-icon' />
+                                                        <Image src='/icons/filter-icon.svg' alt='filter-icon' width={16} height={16} />
                                                     </button>
                                                 </span>
                                             </th>
@@ -295,26 +296,26 @@ export default function Users() {
                                                                     setShowMoreActionsDropdown(!showMoreActionsDropdown);
                                                                     showOverlay();
                                                                 }}>
-                                                                    <img src='/icons/more-icon.svg' alt='More icon' />
+                                                                    <Image src='/icons/more-icon.svg' alt='More icon' width={20} height={20} />
                                                                 </button>
                                                                 {
                                                                     (showMoreActionsDropdown && selectedUser == user.id) && <div id='moreActionsDropdown' className='absolute z-40 right-0 shadow-[0_3px_20px_5px_rgba(0,0,0,0.04)] bg-white rounded-[4px] border border-1 border-accent-text-color/[0.04] w-[180px]'>
                                                                         <ul className='flex flex-col'>
                                                                             <li>
                                                                                 <Link href={`/customers/users/${user.id}`} type='button' className='p-[14px] w-full hover:bg-gray-100 rounded-t-[4px] flex gap-[8px]'>
-                                                                                    <img src='/icons/eye-icon.svg' alt='View details icon' />
+                                                                                    <Image src='/icons/eye-icon.svg' alt='View details icon' width={16} height={16} />
                                                                                     <span>View details</span>
                                                                                 </Link>
                                                                             </li>
                                                                             <li>
                                                                                 <button type='button' className='p-[14px] w-full hover:bg-gray-100 flex gap-[8px]'>
-                                                                                    <img src='/icons/blacklist-user-icon.svg' alt='Blacklist user icon' />
+                                                                                    <Image src='/icons/blacklist-user-icon.svg' alt='Blacklist user icon' width={16} height={16} />
                                                                                     <span>Blacklist user</span>
                                                                                 </button>
                                                                             </li>
                                                                             <li>
                                                                                 <button type='button' className='p-[14px] w-full hover:bg-gray-100 rounded-b-[4px] flex gap-[8px]'>
-                                                                                    <img src='/icons/activate-user-icon.svg' alt='Activate user icon' />
+                                                                                    <Image src='/icons/activate-user-icon.svg' alt='Activate user icon' width={16} height={16} />
                                                                                     <span>Activate user</span>
                                                                                 </button>
                                                                             </li>
@@ -345,7 +346,7 @@ export default function Users() {
                                             }
                                         }}>
                                             {numberOfUsersShown}
-                                            <img src='/icons/chevron-down-icon.svg' alt='Dropdown icon' />
+                                            <Image src='/icons/chevron-down-icon.svg' alt='Dropdown icon' width={14} height={14} />
                                         </button>
                                         {
                                             showNumberOfUsersShownDropdown && <div id='numberOfUsersShownDropdown' className='flex-col bg-white rounded-[4px] border border-1 border-gray-200 absolute z-40 top-[34px]'>
@@ -362,7 +363,7 @@ export default function Users() {
                                             setCurrPage(currPage - 1);
                                         }
                                     }}>
-                                        <img src='/icons/chevron-left-icon.svg' alt='Previous icon' className={currPage == 1 ? 'opacity-60' : ''} />
+                                        <Image src='/icons/chevron-left-icon.svg' alt='Previous icon' className={currPage == 1 ? 'opacity-60' : ''} width={14} height={14} />
                                     </button>
 
                                     <div className='flex gap-[4px]'>
@@ -411,7 +412,7 @@ export default function Users() {
                                             setCurrPage(currPage + 1);
                                         }
                                     }}>
-                                        <img src='/icons/chevron-right-icon.svg' alt='Next icon' className={currPage == numOfPages ? 'opacity-60' : ''} />
+                                        <Image src='/icons/chevron-right-icon.svg' alt='Next icon' className={currPage == numOfPages ? 'opacity-60' : ''} width={14} height={14} />
                                     </button>
                                 </div>
                             </div>

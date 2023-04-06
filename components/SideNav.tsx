@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { showOverlay } from '@/components/FullScreenOverlay';
 import { useRecoilState } from 'recoil';
 import { switchOrgDropdownState } from '@/states/sideNavStates';
+import Image from 'next/image';
 
 export default function SideNav() {
     interface Link {
@@ -144,9 +145,9 @@ export default function SideNav() {
             <div className='relative'>
                 <button type='button' className='flex gap-[10px] items-center text-16 text-accent-text-color px-[30px] py-[12px] border-l-[3px] border-transparent cursor-pointer'
                 onClick={showSwitchOrgDropdown}>
-                    <img src='/icons/organization-icon.svg' width={16} height={16} alt='Organization icon' />
+                    <Image src='/icons/organization-icon.svg' width={16} height={16} alt='Organization icon' />
                     Switch Organization
-                    <img src='/icons/chevron-down-icon.svg' width={12} height={12} alt='Organization icon' />
+                    <Image src='/icons/chevron-down-icon.svg' width={12} height={12} alt='Organization icon' />
                 </button>
                 {switchOrgDropdown && (
                     <div className='flex flex-col absolute z-40 bg-white min-w-[220px] py-[4px] rounded-[8px] border border-1 border-gray-200 right-[24px] mt-[4px]'>
@@ -159,7 +160,7 @@ export default function SideNav() {
             <Link href='/dashboard' className={router.pathname == '/dashboard' ?
                                 [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-100 mt-[30px] px-[30px] py-[12px] border-l-[3px] bg-primary-color-lighter border-primary-color'].join(' ') :
                                 [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-60 hover:opacity-100 mt-[30px] px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color'].join(' ')}>
-                <img src='/icons/dashboard-icon.svg' width={16} height={16} alt='Dashboard icon' />
+                <Image src='/icons/dashboard-icon.svg' width={16} height={16} alt='Dashboard icon' />
                 Dashboard
             </Link>
 
@@ -172,7 +173,7 @@ export default function SideNav() {
                                 <Link href={link.url} className={router.pathname == link.url ?
                                 [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-100 px-[30px] py-[12px] border-l-[3px] bg-primary-color-lighter border-primary-color'].join(' ') :
                                 [sideNavStyles.link, 'flex gap-[10px] text-16 text-accent-text-color opacity-60 hover:opacity-100 px-[30px] py-[12px] border-l-[3px] border-transparent hover:border-primary-color'].join(' ')}>
-                                    <img src={link.iconUrl} width={16} height={16} alt={`${link.title} icon`} className='' />
+                                    <Image src={link.iconUrl} width={16} height={16} alt={`${link.title} icon`} className='' />
                                     {link.title}
                                 </Link>
                             </li>
@@ -185,7 +186,7 @@ export default function SideNav() {
             <button type='button' onClick={() => {
                 window.location.href = '/'
             }} className='flex w-full gap-[10px] text-16 text-accent-text-color mt-[10px] px-[30px] py-[12px] border-l-[3px] border-transparent'>
-                <img src='/icons/logout-icon.svg' width={16} height={16} alt='Log out icon' />
+                <Image src='/icons/logout-icon.svg' width={16} height={16} alt='Log out icon' />
                 Log out
             </button>
             <p className='text-12 text-accent-text-color mt-[10px] px-[30px] py-[12px]'>v1.2.0</p>
