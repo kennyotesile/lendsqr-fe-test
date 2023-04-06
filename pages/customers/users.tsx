@@ -31,22 +31,66 @@ export default function Users() {
         showOverlay();
     }
 
-    const [users, setUsers] = useState<string | null>();
+    interface User {
+        createdAt: string|null;
+        orgName: string|null;
+        userName: string|null;
+        email: string|null;
+        phoneNumber: string|null;
+        lastActiveDate: string|null;
+        profile: {
+            firstName: string|null;
+            lastName: string|null;
+            phoneNumber: string|null;
+            avatar: string|null;
+            gender: string|null;
+            bvn: string|null;
+            address: string|null;
+            currency: string|null;
+        };
+        guarantor: {
+            firstName: string|null;
+            lastName: string|null;
+            phoneNumber: string|null;
+            gender: string|null;
+            address: string|null;
+        };
+        accountBalance: string|null;
+        accountNumber: string|null;
+        socials: {
+            facebook: string|null;
+            instagram: string|null;
+            twitter: string|null;
+        };
+        education: {
+            level: string|null;
+            employmentStatus: string|null;
+            sector: string|null;
+            duration: string|null;
+            officeEmail: string|null;
+            monthlyIncome: string[]|null;
+            loanRepayment: string|null;
+        };
+        id: string|null;
+      }
+
+    const [users, setUsers] = useState<User[] | null>();
     const [selectedUser, setSelectedUser] = useState<number>(0);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const usersLocal: string | null = localStorage.getItem('user');
+            const usersLocal: string | null = localStorage.getItem('users');
             if (usersLocal === null) {
                 fetch(`${apiUrl}/users`)
                     .then(res => res.json())
                     .then(data => {
                         localStorage.setItem('users', JSON.stringify(data));
+                        setUsers(JSON.parse(localStorage.getItem('users')!));
                     })
+            } else {
+                setUsers(JSON.parse(localStorage.getItem('users')!));
             }
         }
-
-        setUsers(localStorage.getItem('users'));
     }, [])
 
     const [numberOfUsersShown, setNumberOfUsersShown] = useState<number>(10);
@@ -61,7 +105,7 @@ export default function Users() {
 
     function handleNumberOfUsersShownDropdownInput(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
-            if (Number(e.currentTarget.value) >= 1 && Number(e.currentTarget.value) <= JSON.parse(users!).length) {
+            if (Number(e.currentTarget.value) >= 1 && Number(e.currentTarget.value) <= users!.length) {
                 setNumberOfUsersShown(Number(e.currentTarget.value));
                 hideAllDropdowns();
             }
@@ -227,7 +271,7 @@ export default function Users() {
                                     </thead>
                                     <tbody>
                                         {
-                                            users && JSON.parse(users).map((user: any) => {
+                                            users && users.map((user: any) => {
                                                 return (
                                                     <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
                                                         <td className='py-[20px] min-w-[100px] max-w-[147px] truncate pr-[30px]'>{user.orgName}</td>
@@ -302,11 +346,11 @@ export default function Users() {
                                         </button>
                                         {
                                             showNumberOfUsersShownDropdown && <div id='numberOfUsersShownDropdown' className='flex-col bg-white rounded-[4px] border border-1 border-gray-200 absolute z-40 top-[34px]'>
-                                                <input type='number' max={JSON.parse(users!).length} min='1' placeholder={`1 - ${JSON.parse(users!).length}`} className='border border-0 rounded-[4px] focus:outline-primary-color h-8 w-[76px] px-2' onKeyDown={handleNumberOfUsersShownDropdownInput} />
+                                                <input type='number' max={users!.length} min='1' placeholder={`1 - ${users!.length}`} className='border border-0 rounded-[4px] focus:outline-primary-color h-8 w-[76px] px-2' onKeyDown={handleNumberOfUsersShownDropdownInput} />
                                             </div>
                                         }
                                     </div>
-                                    out of { users && JSON.parse(users!).length }
+                                    out of { users && users.length }
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <button className='w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10'>
@@ -316,7 +360,7 @@ export default function Users() {
                                     <div className='flex gap-[4px]'>
                                         {/* {
                                             users && {
-                                                const numOfPages: number = getNumOfPages(numberOfUsersShown, JSON.parse(users!).length);
+                                                const numOfPages: number = getNumOfPages(numberOfUsersShown, users!.length);
     
                                                 const paginationBtns: number[] = [];
 
