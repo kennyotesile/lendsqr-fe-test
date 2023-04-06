@@ -59,7 +59,7 @@ export default function UserDetails() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (router.isReady) {
       const usersLocal: string | null = localStorage.getItem('users');
       if (usersLocal === null) {
           fetch(`${apiUrl}/users`)
@@ -72,7 +72,7 @@ export default function UserDetails() {
           setUsers(JSON.parse(localStorage.getItem('users')!));
       }
     }
-  }, [])
+  }, [router.isReady])
 
   useEffect(() => {
     if (users !== null) {
@@ -96,10 +96,10 @@ export default function UserDetails() {
           </aside>
 
           <main className='w-full h-full flex flex-col p-[24px] md:p-[30px] lg:p-[60px] overflow-y-auto'>
-            <Link href='/customers/users' className='text-16 mb-[32px] flex items-center gap-[13px]'>
+            <button onClick={router.back} className='text-16 mb-[32px] flex items-center gap-[13px]'>
                 <img src='/icons/back-arrow.svg' alt='Back icon' />
                 Back to Users
-            </Link>
+            </button>
             <div className='flex flex-col gap-[20px] md:flex-row justify-between mb-[40px]'>
               <h1 className='text-24 text-accent-text-color'>User Details</h1>
               <div className='flex gap-[20px]'>
