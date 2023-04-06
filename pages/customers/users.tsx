@@ -3,29 +3,20 @@ import Head from 'next/head'
 import SideNav from '@/components/SideNav'
 import { useEffect, useState } from 'react'
 import Link from 'next/link';
-import FullScreenOverlay, { hideOverlay, showOverlay } from '@/components/FullScreenOverlay';
+import FullScreenOverlay, { showOverlay } from '@/components/FullScreenOverlay';
 import { useRecoilState } from 'recoil';
-import { switchOrgDropdownState } from '@/states/sideNavStates';
 import Image from 'next/image';
+import { showNumberOfUsersShownDropdownState, showFiltersDropdownState, showMoreActionsDropdownState } from '@/states/usersStates';
+import useHideAllDropdowns from "@/utils/useHideAllDropdowns";
 
 export default function Users() {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-    const [showNumberOfUsersShownDropdown, setShowNumberOfUsersShownDropdown] = useState<boolean>(false);
-    const [showMoreActionsDropdown, setShowMoreActionsDropdown] = useState<boolean>(false);
-    const [showFiltersDropdown, setShowFiltersDropdown] = useState<boolean>(false);
+    const hideAllDropdowns = useHideAllDropdowns();
 
-    const [switchOrgDropdown, setSwitchOrgDropdown] = useRecoilState<boolean>(switchOrgDropdownState);
-
-    function hideAllDropdowns() {
-        setShowNumberOfUsersShownDropdown(false);
-        setShowMoreActionsDropdown(false);
-        setShowFiltersDropdown(false);
-
-        setSwitchOrgDropdown(false);
-
-        hideOverlay();
-    }
+    const [showNumberOfUsersShownDropdown, setShowNumberOfUsersShownDropdown] = useRecoilState<boolean>(showNumberOfUsersShownDropdownState)
+    const [showMoreActionsDropdown, setShowMoreActionsDropdown] = useRecoilState<boolean>(showMoreActionsDropdownState)
+    const [showFiltersDropdown, setShowFiltersDropdown] = useRecoilState<boolean>(showFiltersDropdownState)
 
     function handleShowFiltersDropdown() {
         setShowFiltersDropdown(true);
@@ -127,7 +118,7 @@ export default function Users() {
                 <title>Users | Lendsqr</title>
             </Head>
 
-            <FullScreenOverlay onClick={hideAllDropdowns} />
+            <FullScreenOverlay />
 
             <div className='font-work-sans bg-whitespace-color h-screen pt-[100px]'>
                 <div className='absolute w-screen top-0'>

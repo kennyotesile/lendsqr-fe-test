@@ -2,6 +2,7 @@ import TopNav from '@/components/TopNav'
 import Head from 'next/head'
 import SideNav from '@/components/SideNav'
 import EmptyPageMessage from '@/components/EmptyPageMessage'
+import FullScreenOverlay from '@/components/FullScreenOverlay'
 
 export default function LoanRequests() {
   return (
@@ -9,6 +10,9 @@ export default function LoanRequests() {
       <Head>
         <title>Loan Requests | Lendsqr</title>
       </Head>
+
+      <FullScreenOverlay />
+
       <div className='font-work-sans bg-whitespace-color h-screen pt-[100px]'>
         <div className='absolute w-screen top-0'>
           <TopNav />

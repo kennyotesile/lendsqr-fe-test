@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import FullScreenOverlay from '@/components/FullScreenOverlay'
 
 export default function UserDetails() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -86,6 +87,9 @@ export default function UserDetails() {
       <Head>
         <title>User Details | Lendsqr</title>
       </Head>
+
+      <FullScreenOverlay />
+
       <div className='font-work-sans bg-whitespace-color h-screen pt-[100px]'>
         <div className='absolute w-screen top-0'>
           <TopNav />
