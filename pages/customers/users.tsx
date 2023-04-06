@@ -94,6 +94,8 @@ export default function Users() {
     }, [])
 
     const [numberOfUsersShown, setNumberOfUsersShown] = useState<number>(10);
+    const numOfPages: number = getNumOfPages(numberOfUsersShown, users?.length);
+    const [currPage, setCurrPage] = useState<number>(1);
 
     function getNumOfPages(num: number, total: number | undefined): number {
         if (total != undefined) {
@@ -108,6 +110,7 @@ export default function Users() {
             if (Number(e.currentTarget.value) >= 1 && Number(e.currentTarget.value) <= users!.length) {
                 setNumberOfUsersShown(Number(e.currentTarget.value));
                 hideAllDropdowns();
+                setCurrPage(1);
             }
         }
     }
@@ -271,7 +274,7 @@ export default function Users() {
                                     </thead>
                                     <tbody>
                                         {
-                                            users && users.map((user: any) => {
+                                            users && users.slice((numberOfUsersShown * currPage) - numberOfUsersShown, (numberOfUsersShown * currPage)).map((user: any) => {
                                                 return (
                                                     <tr key={user.id} className='border-b-[1px] border-accent-text-color/[0.1]'>
                                                         <td className='py-[20px] min-w-[100px] max-w-[147px] truncate pr-[30px]'>{user.orgName}</td>
@@ -375,24 +378,26 @@ export default function Users() {
                                                 })
                                             }
                                         } */}
-                                        <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10'>
-                                            <span className='text-16 font-medium'>1</span>
+                                        <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10' onClick={() => {setCurrPage(1)}}>
+                                            <span className={currPage == 1 ? 'text-16 font-medium' : 'text-16 font-normal text-primary-text-color/60'}>1</span>
                                         </button>
-                                        <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10'>
-                                            <span className='text-16 font-normal text-primary-text-color/60'>2</span>
-                                        </button>
-                                        <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10'>
-                                            <span className='text-16 font-normal text-primary-text-color/60'>3</span>
-                                        </button>
-                                        <div className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px]'>
-                                            <span className='text-16 font-normal text-primary-text-color/60'>...</span>
-                                        </div>
-                                        <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10'>
-                                            <span className='text-16 font-normal text-primary-text-color/60'>9</span>
-                                        </button>
-                                        <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10'>
-                                            <span className='text-16 font-normal text-primary-text-color/60'>10</span>
-                                        </button>
+                                        { (numOfPages > 1) && <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10' onClick={() => {setCurrPage(2)}}>
+                                            <span className={currPage == 2 ? 'text-16 font-medium' : 'text-16 font-normal text-primary-text-color/60'}>2</span>
+                                        </button> }
+                                        { (numOfPages > 2) && <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10' onClick={() => {setCurrPage(3)}}>
+                                            <span className={currPage == 3 ? 'text-16 font-medium' : 'text-16 font-normal text-primary-text-color/60'}>3</span>
+                                        </button> }
+                                        { (numOfPages > 6) && <>
+                                            <div className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px]'>
+                                                <span className='text-16 font-normal text-primary-text-color/60'>...</span>
+                                            </div>
+                                            <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10' onClick={() => {setCurrPage(numOfPages - 1)}}>
+                                                <span className={currPage == (numOfPages - 1) ? 'text-16 font-medium' : 'text-16 font-normal text-primary-text-color/60'}>{ numOfPages - 1 }</span>
+                                            </button>
+                                            <button className='min-w-[24px] h-[24px] px-2 flex items-center justify-center rounded-[4px] hover:bg-accent-text-color/10' onClick={() => {setCurrPage(numOfPages)}}>
+                                            <span className={currPage == numOfPages ? 'text-16 font-medium' : 'text-16 font-normal text-primary-text-color/60'}>{ numOfPages }</span>
+                                            </button>
+                                        </> }
                                     </div>
 
                                     <button className='w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-accent-text-color/10 hover:bg-accent-text-color/20'>
