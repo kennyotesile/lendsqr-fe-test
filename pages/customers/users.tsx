@@ -273,7 +273,7 @@ export default function Users() {
                                         {
                                             users && users.map((user: any) => {
                                                 return (
-                                                    <tr className='border-b-[1px] border-accent-text-color/[0.1]'>
+                                                    <tr key={user.id} className='border-b-[1px] border-accent-text-color/[0.1]'>
                                                         <td className='py-[20px] min-w-[100px] max-w-[147px] truncate pr-[30px]'>{user.orgName}</td>
                                                         <td className='py-[20px] min-w-[100px] max-w-[147px] truncate pl-[30px]'>{user.userName}</td>
                                                         <td className='py-[20px] min-w-[100px] max-w-[147px] truncate pl-[30px]'>{user.email}</td>
